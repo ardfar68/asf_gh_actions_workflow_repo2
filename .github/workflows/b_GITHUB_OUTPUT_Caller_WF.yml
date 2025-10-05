@@ -7,7 +7,7 @@ on:
 
 jobs:
   job1_in_caller_wf:
-    uses: ardfar68/GH_ACTIONS_WF_1/.github/workflows/a_GITHUB_OUTPUT_Reusable_WF.yml@dev1
+    uses: ardfar68/asf_gh_actions_workflow_repo1/.github/workflows/a_GITHUB_OUTPUT_Reusable_WF.yml@dev1
 
   job2_in_caller_wf:
     runs-on: ubuntu-latest
