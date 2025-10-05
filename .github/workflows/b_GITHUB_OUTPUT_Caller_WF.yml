@@ -13,10 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: job1_in_caller_wf
     steps:
-      - name: Print finalSum from reusable workflow
+      - name: Print the four arithmetic operations from reusable workflow(caller wf)
         run: |
-          echo finalSum, finalDivision, finalMulti and  finalSubtraction from reusable workflow:
-          echo final sum ${{ needs.job1_in_caller_wf.outputs.finalSum }}
-          echo ${{ needs.job1_in_caller_wf.outputs.finalDivision }}
-          echo ${{ needs.job1_in_caller_wf.outputs.finalMulti }}
-          echo ${{ needs.job1_in_caller_wf.outputs.finalSubtraction }}
+          echo sum result from reusable-wf job1:\
+            ${{ needs.job1_in_caller_wf.outputs.finalSum }}
+          echo division result from reusable-wf job1:\
+            ${{ needs.job1_in_caller_wf.outputs.finalDivision }}
+          echo multiplication result from reusable-wf job2:\
+            ${{ needs.job1_in_caller_wf.outputs.finalMulti }}
+          echo subtraction result from reusable-wf job2:\
+            ${{ needs.job1_in_caller_wf.outputs.finalSubtraction }}
