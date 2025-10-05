@@ -1,0 +1,22 @@
+name: a2_caller_wf
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev2
+
+jobs:
+  job1_in_caller_wf:
+    uses: ardfar68/GH_Actions_Repo/.github/workflows/a_GITHUB_OUTPUT_Reusable_WF.yml@dev1
+
+  job2_in_caller_wf:
+    runs-on: ubuntu-latest
+    needs: job1_in_caller_wf
+    steps:
+      - name: Print finalSum from reusable workflow
+        run: |
+          echo finalSum, finalDivision, finalMulti and  finalSubtraction from reusable workflow:
+          echo ${{ needs.job1_in_caller_wf.outputs.finalSum }}
+          echo ${{ needs.job1_in_caller_wf.outputs.finalDivision }}
+          echo ${{ needs.job1_in_caller_wf.outputs.finalMulti }}
+          echo ${{ needs.job1_in_caller_wf.outputs.finalSubtraction }}
