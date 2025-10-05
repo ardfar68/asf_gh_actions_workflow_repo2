@@ -16,7 +16,7 @@ jobs:
       - name: Print finalSum from reusable workflow
         run: |
           echo finalSum, finalDivision, finalMulti and  finalSubtraction from reusable workflow:
-          echo ${{ needs.job1_in_caller_wf.outputs.finalSum }}
+          echo final sum ${{ needs.job1_in_caller_wf.outputs.finalSum }}
           echo ${{ needs.job1_in_caller_wf.outputs.finalDivision }}
           echo ${{ needs.job1_in_caller_wf.outputs.finalMulti }}
           echo ${{ needs.job1_in_caller_wf.outputs.finalSubtraction }}
