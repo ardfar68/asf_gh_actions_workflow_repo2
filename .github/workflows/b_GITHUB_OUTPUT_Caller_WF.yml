@@ -19,13 +19,13 @@ jobs:
     steps:
       - name: Print the four arithmetic operations from reusable workflow(caller wf)
         run: |
-          echo sum result from reusable-wf job1:
+          echo sum result from reusable-wf job1
             ${{ needs.job1_in_caller_wf.outputs.finalSum }}
-          echo division result from reusable-wf job1:
+          echo division result from reusable-wf job1
             ${{ needs.job1_in_caller_wf.outputs.finalDivision }}
-          echo multiplication result from reusable-wf job2:
+          echo multiplication result from reusable-wf job2
             ${{ needs.job1_in_caller_wf.outputs.finalMulti }}
-          echo subtraction result from reusable-wf job2:
+          echo subtraction result from reusable-wf job2
             ${{ needs.job1_in_caller_wf.outputs.finalSubtraction }}
 
     
