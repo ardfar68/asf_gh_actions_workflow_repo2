@@ -33,4 +33,5 @@ jobs:
     needs: job1_in_caller_wf
     steps:
       - name: Print the four arithmetic operations from reusable workflow(caller wf)
-        run: echo sum result from reusable-wf job1 ${{ needs.job1_in_caller_wf.outputs.allResults }}
+        run: echo "arithmetic operations result from reusable-wf job1:"
+         ${{ needs.job1_in_caller_wf.outputs.allResults }}
