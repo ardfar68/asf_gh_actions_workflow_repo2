@@ -11,7 +11,7 @@ jobs:
     with:
       exampleInput: "This is an example output"
     secrets:
-      MY_SECRET: ${{ secrets.ASF_REPO_SECRET }}
+      CALLER_SECRET: ${{ secrets.ASF_REPO_SECRET }}
 
 
   job2_in_caller_wf:
@@ -19,13 +19,13 @@ jobs:
     needs: job1_in_caller_wf
     steps:
       - name: Print the four arithmetic operations from reusable workflow(caller wf)
-        # Alt_1
+      # Alt_1
         # run: |
         #   echo arithmetic operations result from reusable-wf job1:
         #   echo "${{ needs.job1_in_caller_wf.outputs.allResults }}"
         
         
-        # Alt_2
+      # Alt_2
         run: |
 #         echo sum result from reusable-wf job1:\
 #         ${{ needs.job1_in_caller_wf.outputs.finalSum }}
@@ -35,19 +35,3 @@ jobs:
 #         ${{ needs.job1_in_caller_wf.outputs.finalMulti }}
 #         echo subtraction result from reusable-wf job2:\
 #         ${{ needs.job1_in_caller_wf.outputs.finalSubtraction }}
-
-
-  # job2_in_caller_wf:
-  #   runs-on: ubuntu-latest
-  #   needs: job1_in_caller_wf
-  #   steps:
-  #     - name: Print the four arithmetic operations from reusable workflow(caller wf)
-  #       run: |
-  #         echo sum result from reusable-wf job1:\
-  #         ${{ needs.job1_in_caller_wf.outputs.finalSum }}
-  #         echo division result from reusable-wf job1:\
-  #         ${{ needs.job1_in_caller_wf.outputs.finalDivision }}
-  #         echo multiplication result from reusable-wf job2:\
-  #         ${{ needs.job1_in_caller_wf.outputs.finalMulti }}
-  #         echo subtraction result from reusable-wf job2:\
-  #         ${{ needs.job1_in_caller_wf.outputs.finalSubtraction }}
