@@ -21,7 +21,8 @@ jobs:
       - name: Print the four arithmetic operations from reusable workflow(caller wf)
         run: |
           echo "arithmetic operations result from reusable-wf job1:"
-          echo "${{ needs.job1_in_caller_wf.outputs.allResults }}"
+          echo "${{ needs.job1_in_caller_wf.outputs.allResults }}" | sed 's/\([0-9]\) /\1\n/g'
+          # echo "${{ needs.job1_in_caller_wf.outputs.allResults }}"
 
 
 
