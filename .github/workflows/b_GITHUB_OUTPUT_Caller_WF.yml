@@ -11,7 +11,7 @@ jobs:
     with:
       exampleInput: "This is an example output"
     secrets:
-      test_secret: ${{ secrets.ASF_REPO_SECRET }}
+      asf_secret: ${{ secrets.ASF_REPO_SECRET }}
 
 
   job2_in_caller_wf:
