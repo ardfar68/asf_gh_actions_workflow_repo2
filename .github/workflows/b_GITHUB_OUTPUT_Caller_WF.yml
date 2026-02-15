@@ -19,7 +19,7 @@ jobs:
             echo "ERROR: Secret is EMPTY or does not exist"
           else
             echo "SUCCESS: Secret exists with length: ${#MY_SECRET}"
-            echo "First 5 chars: ${MY_SECRET:0:3}"
+            echo "First 5 chars: ${MY_SECRET:0:5}"
           fi
         env:
           MY_SECRET: ${{ secrets.ASF_REPO_SECRET }}
