@@ -6,7 +6,23 @@ on:
       - dev2
 
 jobs:
+  debug-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug secret
+        run: |
+          echo "Checking secret..."
+          if [ -z "$MY_SECRET" ]; then
+            echo "ERROR: Secret is EMPTY or does not exist"
+          else
+            echo "SUCCESS: Secret exists with length: ${#MY_SECRET}"
+            echo "First 3 chars: ${MY_SECRET:0:3}"
+          fi
+        env:
+          MY_SECRET: ${{ secrets.ASF_REPO_SECRET }}
+
   job1_in_caller_wf:
+    needs: debug-secret
     uses: ardfar68/asf_gh_actions_workflow_repo1/.github/workflows/a_GITHUB_OUTPUT_Reusable_WF.yml@dev1
     with:
       exampleInput: "This is from caller wf"
@@ -18,14 +34,7 @@ jobs:
   job2_in_caller_wf:
     runs-on: ubuntu-latest
     needs: job1_in_caller_wf
-    steps:
-      
-    # Alt_1
-      # - name: Print the four arithmetic operations from reusable workflow(caller wf)
-        # run: |
-        #   echo arithmetic operations result from reusable-wf job1:
-        #   echo "${{ needs.job1_in_caller_wf.outputs.allResults }}"
-        
+    steps:       
         
     # Alt_2
       - name: Print the four arithmetic operations from reusable workflow(caller wf)
@@ -38,3 +47,10 @@ jobs:
           ${{ needs.job1_in_caller_wf.outputs.finalMulti }}
           echo subtraction result from reusable-wf job2:\
           ${{ needs.job1_in_caller_wf.outputs.finalSubtraction }}
+
+
+    # Alt_1
+      # - name: Print the four arithmetic operations from reusable workflow(caller wf)
+        # run: |
+        #   echo arithmetic operations result from reusable-wf job1:
+        #   echo "${{ needs.job1_in_caller_wf.outputs.allResults }}"
