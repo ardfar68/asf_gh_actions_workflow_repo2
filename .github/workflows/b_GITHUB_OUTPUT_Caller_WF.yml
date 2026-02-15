@@ -12,6 +12,7 @@ jobs:
       exampleInput: "This is from caller wf"
     secrets:
       asf_secret: ${{ secrets.ASF_REPO_SECRET }}
+    # secrets: inherit
 
 
   job2_in_caller_wf:
