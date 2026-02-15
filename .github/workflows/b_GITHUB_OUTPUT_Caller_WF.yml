@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - dev2
+permissions:
+  contents: read
+  actions: read
 
 jobs:
   debug-secret:
