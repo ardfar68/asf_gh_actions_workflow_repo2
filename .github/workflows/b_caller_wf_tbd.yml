@@ -18,7 +18,7 @@ jobs:
           echo secrets length is: ${my_repo2_secret:0:7}
 
   job1_in_caller_wf:
-    # needs: debug_secret
+    needs: debug_secret
     uses: ardfar68/asf_gh_actions_workflow_repo1/.github/workflows/a_reusable_wf_tbd.yml@dev1
     with:
       exampleInputNew: "This is from caller wf new"
