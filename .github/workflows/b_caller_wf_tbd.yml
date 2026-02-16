@@ -10,5 +10,7 @@ jobs:
     uses: ardfar68/asf_gh_actions_workflow_repo1/.github/workflows/a_reusable_wf_tbd.yml@dev1
     with:
       exampleInputNew: "This is from caller wf new"
+    secrets:
+      asf_secret: ${{ secrets.ASF_REPO_SECRET }}
 
  
