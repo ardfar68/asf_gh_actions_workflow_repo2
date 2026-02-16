@@ -1,4 +1,4 @@
-name: a2_caller_wf_
+name: a2_caller_wf
 on:
   workflow_dispatch:
   push:
