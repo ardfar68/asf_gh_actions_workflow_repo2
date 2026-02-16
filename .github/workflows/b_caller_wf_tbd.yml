@@ -6,16 +6,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  # debug_secret:
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     my_repo2_secret: ${{ secrets.ASF_REPO_SECRET }}
+  debug_secret:
+    runs-on: ubuntu-latest
+    env:
+      my_repo2_secret: ${{ secrets.ASF_REPO_SECRET }}
 
-  #   steps:
-  #     - name: print out secret
-  #       run: |
-  #         echo secrets length is: ${#my_repo2_secret}
-  #         echo secrets length is: ${my_repo2_secret:0:7}
+    steps:
+      - name: print out secret
+        run: |
+          echo secrets length is: ${#my_repo2_secret}
+          echo secrets length is: ${my_repo2_secret:0:7}
 
   job1_in_caller_wf:
     # needs: debug_secret
