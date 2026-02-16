@@ -1,9 +1,9 @@
 name: a2_caller_wf_tbd
 on:
-  workflow_dispatch:
   push:
     branches:
       - dev2
+  workflow_dispatch:
 
 jobs:
   job1_in_caller_wf:
