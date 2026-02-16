@@ -16,7 +16,7 @@ jobs:
         env:
           MY_SECRET: ${{ secrets.ASF_REPO_SECRET }}
         run: |
-          echo Secret exists with length: ${#MY_SECRET}"
+          echo Secret exists with length: ${#MY_SECRET}
           echo "Part of secret value is: ${MY_SECRET:0:7}"
 
   job1_in_caller_wf:
