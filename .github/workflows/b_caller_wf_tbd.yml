@@ -10,11 +10,11 @@ jobs:
 
   debug_secret:
     runs-on: ubuntu-latest
-    env:
-      caller_secret: ${{ secrets.ASF_REPO_SECRET }}
-
+    
     steps:
       - name: print out secret
+        env:
+          caller_secret: ${{ secrets.ASF_REPO_SECRET }}
         run: |
           echo secrets length is: ${#caller_secret}
           echo secrets length is: ${caller_secret:0:7}
@@ -24,8 +24,7 @@ jobs:
     uses: ardfar68/asf_gh_actions_workflow_repo1/.github/workflows/a_reusable_wf_tbd.yml@dev1
     with:
       exampleInputNew: "This is from caller wf new"
-    secrets: inherit
-    # secrets:
-    #  asf_secret: ${{ secrets.ASF_REPO_SECRET }}
+    secrets:
+      asf_secret: ${{ secrets.ASF_REPO_SECRET }}
 
  
