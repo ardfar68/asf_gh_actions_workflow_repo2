@@ -26,6 +26,6 @@ jobs:
       exampleInputNew: "This is from caller wf new"
     secrets: inherit
     # secrets:
-    #   asf_secret: ${{ secrets.ASF_REPO_SECRET }}
+    #  asf_secret: ${{ secrets.ASF_REPO_SECRET }}
 
  
