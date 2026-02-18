@@ -40,7 +40,7 @@ jobs:
           echo div is: ${{ needs.call_reusable_wf.outputs.divOutput }}
     
     # ALT_2
-      steps:
+      # steps:
       - name: printing out result from reusable wf        
         env:
           SUM: ${{ needs.call_reusable_wf.outputs.sumOutput }}
