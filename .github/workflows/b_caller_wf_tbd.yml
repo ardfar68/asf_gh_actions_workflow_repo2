@@ -33,13 +33,13 @@ jobs:
     steps:
       - name: printing out result from reusable wf
         run: |
-          echo sum result from reusable-wf job1:\
+          echo sum result from reusable-wf:\
           ${{ needs.call_reusable_wf.outputs.sumOutput }}
-          echo subtraction result from reusable-wf job2:\
+          echo subtraction result from reusable-wf:\
           ${{ needs.call_reusable_wf.outputs.subOutput }}
-          echo multiplication result from reusable-wf job2:\
+          echo multiplication result from reusable-wf:\
           ${{ needs.call_reusable_wf.outputs.multiOutput }}
-          echo division result from reusable-wf job1:\
+          echo division result from reusable-wf:\
           ${{ needs.call_reusable_wf.outputs.divOutput }}
         
         # run: |
