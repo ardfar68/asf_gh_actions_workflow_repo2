@@ -41,5 +41,4 @@ jobs:
       # Alt_2
       - name: printing out result from reusable wf_alt2
         run: |
-          echo arithmetic operations result from reusable-wf job1:\
           echo ${{ needs.call_reusable_wf.outputs.allResults }}
