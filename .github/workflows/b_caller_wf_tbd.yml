@@ -38,7 +38,7 @@ jobs:
           echo div is: ${{ needs.call_reusable_wf.outputs.divOutput }}
 
 
-      # Alt_21
+      # Alt_2
       - name: printing out result from reusable wf_alt2
         run: |
           echo ${{ needs.call_reusable_wf.outputs.allResults }}
