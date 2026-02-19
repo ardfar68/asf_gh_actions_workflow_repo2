@@ -1,52 +1,38 @@
 name: a2_caller_wf
 on:
+  push:
+    branches:
+      - dev2
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - dev2
-# permissions:
-#   contents: read
-#   actions: read
 
 jobs:
-  debug-secret:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Debug secret
-        env:
-          MY_SECRET: ${{ secrets.ASF_REPO_SECRET }}
-        run: |
-          echo Secret exists with length: ${#MY_SECRET}
-          echo "Part of secret value is: ${MY_SECRET:0:7}"
 
-  job1_in_caller_wf:
-    needs: debug-secret
-    uses: ardfar68/asf_gh_actions_workflow_repo1/.github/workflows/a_reusable_wf.yml@dev1
+  debug_secret:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: print out secret
+        env:
+          caller_secret: ${{ secrets.ASF_REPO_SECRET }}
+        run: |
+          echo secrets length is: ${#caller_secret}
+          echo secrets length is: ${caller_secret:0:7}
+
+  call_reusable_wf:
+    needs: debug_secret
+    uses: ardfar68/asf_gh_actions_workflow_repo1/.github/workflows/a_reusable_wf_tbd.yml@dev1
     with:
-      exampleInput: "This is from caller wf"
+      exampleInputNew: "This is from caller wf new"
     secrets:
       asf_secret: ${{ secrets.ASF_REPO_SECRET }}
 
-  job2_in_caller_wf:
+  print_result_from_reusable_wf_alt1:
     runs-on: ubuntu-latest
-    needs: job1_in_caller_wf
-    steps:       
-        
-    # Alt_1
-      - name: Print the four arithmetic operations from reusable workflow(caller wf)
+    needs: call_reusable_wf
+    steps:
+      - name: printing out result from reusable wf
         run: |
-          echo sum result from reusable-wf job1:\
-          ${{ needs.job1_in_caller_wf.outputs.finalSum }}
-          echo division result from reusable-wf job1:\
-          ${{ needs.job1_in_caller_wf.outputs.finalDivision }}
-          echo multiplication result from reusable-wf job2:\
-          ${{ needs.job1_in_caller_wf.outputs.finalMulti }}
-          echo subtraction result from reusable-wf job2:\
-          ${{ needs.job1_in_caller_wf.outputs.finalSubtraction }}
-
-
-    # Alt_2
-      - name: Print the four arithmetic operations from reusable workflow(caller wf)
-        run: |
-          echo "Arithmetic operations result:"
-          echo ${{ needs.job1_in_caller_wf.outputs.allResults }}
+          echo sum is: ${{ needs.call_reusable_wf.outputs.sumOutput }}
+          echo sub is: ${{ needs.call_reusable_wf.outputs.subOutput }}
+          echo multi is: ${{ needs.call_reusable_wf.outputs.multiOutput }}
+          echo div is: ${{ needs.call_reusable_wf.outputs.divOutput }}
