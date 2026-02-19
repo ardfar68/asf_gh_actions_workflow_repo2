@@ -33,25 +33,17 @@ jobs:
     steps:
       - name: printing out result from reusable wf
         run: |
-          echo sum is: ${{ needs.call_reusable_wf.outputs.sumOutput }}
-          echo sub is: ${{ needs.call_reusable_wf.outputs.subOutput }}
-          echo multi is: ${{ needs.call_reusable_wf.outputs.multiOutput }}
-          echo div is: ${{ needs.call_reusable_wf.outputs.divOutput }}
-    
-  # ALT_2
-  print_result_from_reusable_wf_alt2:
-    runs-on: ubuntu-latest
-    needs: call_reusable_wf
-    steps:
-    - name: printing out result from reusable wf        
-      env:
-        SUM: ${{ needs.call_reusable_wf.outputs.sumOutput }}
-        SUB: ${{ needs.call_reusable_wf.outputs.subOutput }}
-        MUL: ${{ needs.call_reusable_wf.outputs.multiOutput }}
-        DIV: ${{ needs.call_reusable_wf.outputs.divOutput }}
-      run: |
-        echo sum is: $SUM
-        echo sub is: $SUB
-        echo multi is: $MUL
-        echo div is: $DIV
-
+          echo sum result from reusable-wf job1:\
+          ${{ needs.call_reusable_wf.outputs.sumOutput }}
+          echo subtraction result from reusable-wf job2:\
+          ${{ needs.call_reusable_wf.outputs.subOutput }}
+          echo multiplication result from reusable-wf job2:\
+          ${{ needs.call_reusable_wf.outputs.multiOutput }}
+          echo division result from reusable-wf job1:\
+          ${{ needs.call_reusable_wf.outputs.divOutput }}
+        
+        # run: |
+        #   echo sum is: ${{ needs.call_reusable_wf.outputs.sumOutput }}
+        #   echo sub is: ${{ needs.call_reusable_wf.outputs.subOutput }}
+        #   echo multi is: ${{ needs.call_reusable_wf.outputs.multiOutput }}
+        #   echo div is: ${{ needs.call_reusable_wf.outputs.divOutput }}
